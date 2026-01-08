@@ -39,8 +39,6 @@ extension AsyncThrowingStream<WSFrame, any Error> {
                 return try await WSFrameEncoder.decodeFrame(from: bytes)
             } catch SocketError.disconnected, is SequenceTerminationError {
                 return nil
-            } catch {
-                throw error
             }
         }
     }
